@@ -20,9 +20,12 @@ def disconnect():
 
 def main():
 	client.connect((IP, PORT))
-	send("Hello World!")
-	time.sleep(1)
-	disconnect()
+	try:
+		while True:
+			send(input())
+	except KeyboardInterrupt:
+		disconnect()
+		print("disconnected from the server")
 
 if __name__ == "__main__":
 	main()
