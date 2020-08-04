@@ -1,4 +1,5 @@
 import socket
+import time
 
 HEADER = 2
 PORT = 5049
@@ -15,11 +16,13 @@ def send(msg):
 	client.send(message)
 
 def disconnect():
-	client.send(b"/xff/xff")
+	client.send(b"\xff\xff")
 
 def main():
-	client.connect((IP, P))
+	client.connect((IP, PORT))
 	send("Hello World!")
+	time.sleep(1)
+	disconnect()
 
 if __name__ == "__main__":
 	main()
